@@ -1,0 +1,36 @@
+@media all and (min-width: 480px) {
+	.Login {
+	  padding: 60px 0;
+	}
+ 
+	.Login form {
+	  font-family: 'Comfortaa', cursive;
+	  margin: 0 auto;
+	  max-width: 320px;
+	  width: 100%;
+	  justify-content: center;
+	  border: 2px solid paleturquoise;
+	  padding: 20px;
+	  border-radius: 6px;
+	}
+	/* .button, button.btn.btn-lg.btn-default.btn-block, button.button.btn.default {
+	  font-family: 'Comfortaa', cursive;
+	  width:100%;
+	  margin-top: 20px;
+	  margin-bottom: 20px;
+	  color: black;
+	  background-color: paleturquoise;
+ 
+	}
+  */
+	#email.form-control {
+	border: solid 2px paleturquoise;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	}
+	#password.form-control{
+	  border: solid 2px paleturquoise;
+	  margin-bottom: 20px;
+ 
+	}
+  }

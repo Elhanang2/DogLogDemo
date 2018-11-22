@@ -10,11 +10,11 @@ module.exports = function validateDogInput(data) {
   data.location = !isEmpty(data.location) ? data.location : "";
 
   if (!Validator.isLength(data.name, { min: 2, max: 20 })) {
-    errors.handle = "Name needs to be between 2 and 20 characters";
+    errors.name = "Name needs to be between 2 and 20 characters";
   }
 
   if (Validator.isEmpty(data.name)) {
-    errors.handle = "Name field is required";
+    errors.name = "Name field is required";
   }
 
   if (Validator.isEmpty(data.weight)) {

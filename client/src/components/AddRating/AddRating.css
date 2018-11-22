@@ -13,7 +13,7 @@
       border: solid 2px black;
       margin: 0 auto;
     }
-    #add-rating{
+    .add-rating{
     width: 60%;
     margin: auto;
     border: 2px solid gray;
@@ -48,7 +48,7 @@
   height: 100%;
   float: left;
 }
-#add-rating{
+.add-rating{
     width: 60%;
     margin: auto;
     border: 2px solid gray;
@@ -85,7 +85,7 @@
     width: 100%;
     float: left;
   } 
-  #add-rating{
+  .add-rating{
     width: 60%;
     margin: auto;
     border: 2px solid gray;

@@ -1,0 +1,30 @@
+{
+  "name": "doglog",
+  "version": "1.0.0",
+  "description": "This project is intended to help shelters organize information about their dogs in an effort to increase pet adoption and interest in adopting from shelters.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adecall/DogLog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adecall/DogLog/issues"
+  },
+  "homepage": "https://github.com/adecall/DogLog#readme",
+  "dendencies": {
+    "axios": "^0.18.0",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2",
+    "react-mail-form": "^1.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.5",
+    "reactstrap": "^6.5.0"
+  }
+}

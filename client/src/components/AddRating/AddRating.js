@@ -3,15 +3,16 @@ import { FormGroup, FormControl,ControlLabel,Button } from "react-bootstrap";
 import "./AddRating.css"
 import axios from "axios";
 // import Toggle from "../Toggle";
-import Togglebutton from '../Togglebutton';
+// import Togglebutton from '../Togglebutton';
 class AddRating extends Component {
     constructor(props) {
         super(props);
         this.onAddratingChange=this.onAddratingChange.bind(this);
         this.state = {
             volunteer_report: [],
+            firstname:"",
             name: "",
-            animal_id: "",
+            dog_id: "",
             sit_rating: "",
             lay_down_rating: "",
             walk_on_leash_rating: "",
@@ -29,42 +30,43 @@ class AddRating extends Component {
        
     submitAddratingForm(event) {
         event.preventDefault();
-        const { name, sit_rating, lay_down_rating, walk_on_leash_rating, sit_in_crate_rating, comment,animal_id}= this.state;
-        
-        axios.post("/api/addrating/:"+animal_id,{ name, sit_rating, lay_down_rating, walk_on_leash_rating, sit_in_crate_rating, comment } )
+        const {  sit_rating, lay_down_rating, walk_on_leash_rating, sit_in_crate_rating, comment,dog_id}= this.state;
+        const firstname=this.props.location.state.firstname;
+        axios.post("/api/addrating/"+dog_id,{firstname,  sit_rating, lay_down_rating, walk_on_leash_rating, sit_in_crate_rating, comment } )
         .then((addratingresult) => {
             console.log(addratingresult);
             this.setState({
                 
-                name: "",
-                animal_id: "",
+                firstname: "",
+                dog_id: "",
                 sit_rating: "",
                 lay_down_rating: "",
                 walk_on_leash_rating: "",
                 sit_in_crate_rating: "",
                 comment: ""
             })
-        }
+        }).catch(err => alert(err));
         
-        )}
+        }
 
     render() {
         // console.log(this.props);
         return (
             <div className="volunteerrating">
-                <form  id='add-rating' >
+                <form  className='add-rating' >
 
-                    <FormGroup className='field'>
+                    {/*<FormGroup className='field'>
                         <ControlLabel> Volunteer Name </ControlLabel>
                         <input type="text" name="name" vlaue={this.state.name} onChange={this.onAddratingChange }/>
-                    </FormGroup>
+                    </FormGroup>*/}
+                    {<h4>Volunteer Name: {this.props.location.state.firstname}</h4>}
                     <FormGroup className='field'>
                         <ControlLabel> Dog Id </ControlLabel>
-                        <input type="text" name="animal_id" vlaue={this.state.animal_id} onChange={this.onAddratingChange }/>
+                        <input type="text" name="dog_id" vlaue={this.state.dog_id} onChange={this.onAddratingChange }/>
                     </FormGroup>
-<p4>rating system: 1 = reasonable, 2 = good; 3 = excellent</p4>
-<br/>
-<br/>
+                        {<h4 style={{color:"blue"}}>rating system: 1 = reasonable, 2 = good; 3 = excellent</h4>}
+                        <br/>
+                        <br/>
                     <FormGroup className='field'>
                         <ControlLabel> sit_rating </ControlLabel>
                         <FormControl componentClass="select" name="sit_rating" value={this.state.value} onChange={this.onAddratingChange} >

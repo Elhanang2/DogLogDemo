@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import axios from "axios";
 import { Redirect} from "react-router-dom";
 //import  Signup from "../Signup";
 
@@ -11,14 +12,35 @@ export default class Login extends Component {
     this.state = {
       showSignup: false,
       volunteerrating: false,
+      login: [],
       email: "",
-      password: ""
+      password: "",
+      firstname: "",
+      errmessage: false
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.loginOnClick = this.loginOnClick.bind(this);
   }
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
   loginOnClick(e){
     e.preventDefault();
-    this.setState({volunteerrating:!this.state.volunteertable})
-  }
+    const {email, password } =this.state;
+    axios.get("/api/getVolunteerLogin", {params: {email: email,
+      password: password
+    }}).then(res =>{ 
+      console.log("first name : "+ res.data.firstname)
+        if((res.data.email === this.state.email) &&
+        (res.data.password === this.state.password)){
+        this.setState({volunteerrating:!this.state.volunteerrating, errmessage: this.state.errmessage, firstname: res.data.firstname})
+    }else{this.setState({errmessage: !this.state.errmessage})}
+    }
+    ).catch(err => console.log(err)) 
+    }
   onClickSignup(e){
     e.preventDefault();
     this.setState({showSignup: !this.state.showSignup })
@@ -27,12 +49,7 @@ export default class Login extends Component {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
-
+  
   zhandleSubmit = event => {
     event.preventDefault();
   }
@@ -40,7 +57,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
+      
         <form onSubmit={this.handleSubmit}>
+        {this.state.errmessage && <h4 style={{color:"red",alignContent:"center"}}>Incorrect password or email </h4>}
           <FormGroup controlId="email" bsSize="large">
           <ControlLabel>email</ControlLabel>
             <FormControl
@@ -54,9 +73,10 @@ export default class Login extends Component {
           <FormGroup controlId="password" bsSize="large">
             <ControlLabel>password</ControlLabel>
             <FormControl
+              type="password"
               value={this.state.password}
               onChange={this.handleChange}
-              type="password"
+              
             />
                  <br/>
           </FormGroup>
@@ -72,10 +92,11 @@ export default class Login extends Component {
           
           </Button><br/>
           {this.state.volunteerrating && <Redirect to={{
-            pathname: '/volunteer'
+            pathname: '/addrating',
+            state: { firstname: this.state.firstname}
           }} />}
           <br></br>
-          <p>No account ?   <a  onClick={this.onClickSignup.bind(this)}>Signup
+          <p>No account ?   <a href="#" onClick={this.onClickSignup.bind(this)}>Signup
           {this.state.showSignup ? <Redirect to={{
             pathname: '/Signup'
           }} />: null}</a></p>

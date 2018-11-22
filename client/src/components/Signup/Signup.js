@@ -7,37 +7,36 @@ import "./Signup.css";
 import {Redirect} from "react-router-dom";
 
 class Signup extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
     
         this.handleInputChange = this.handleInputChange.bind(this);
-    
+        this.onSubmit = this.onSubmit.bind(this);
   
     this.state = {
   
       data: [],
-      fname: '',
-      lname: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
+      password_confirm: '',
       showLogin: false,
       showresult: false,
-      intervalIsSet: false
+      loading: false,
+      passwordNotMuch:false
     };
 }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 6 && this.state.fname.length>3 && this.state.lname.length>3 ;
+    return this.state.email.length > 0 && this.state.password.length > 6 && this.state.firstname.length>3 && this.state.lastname.length>3 ;
   }
   componentDidMount() {
   
     
   }
   componentWillUnmount() {
-    if (this.state.intervalIsSet) {
-      clearInterval(this.state.intervalIsSet);
-      this.setState({ intervalIsSet: null });
-    }
+    
   }
 
   handleInputChange = e => {
@@ -51,55 +50,91 @@ class Signup extends Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
-    
+    const { firstname, lastname, email, password, password_confirm } = this.state;
+    const formData = new FormData();
+    var imagefile = document.querySelector('#volunteerImg');
 
-    const { fname, lname, email, password } = this.state;
+    this.setState({loading: true}, () => {
+      formData.append("image", imagefile.files[0]);
+      console.log(formData);
+      axios.post("https://api.imgur.com/3/image", 
+        formData,
+        {
+        "headers": {
+          "Authorization":"Client-ID 7aca4ff5e398a1a",
+          'Content-Type': 'multipart/form-data'
 
-    axios.post('/api/putData', {  fname, lname, email, password})
-      .then((result) => {
-        console.log(result);
-        //access the results here....
-        // this.getDataFromDb();
-        this.setState({
+        }
       
-            fname: "",
-            lname:"",
-            email: "",
-            password: ""
-          });
+      }).then((response)=>{
+        //console.log("img result "+ response);
+        //this.getImgurl(response.id);
+        const postVolunteer ={
+          firstname, 
+          lastname,
+          email,
+          password, 
+          password_confirm,
+          'image': response.data.data.link
+        };
+    
+        // if(password == password_confirm){
+          console.log("hiiiiiiiiiiii");
+          axios.post('/api/putVolunteer', postVolunteer)
+          .then((result) => {
+            console.log(result);
+            //access the results here....
+            // this.getDataFromDb();
+            this.setState({
           
-      });
+                firstname: "",
+                lastname: "",
+                email: "",
+                password: "",
+                password_confirm:"",
+                image: "",
+                loading: false
+              });
+              
+          }).catch(err => {
+            console.log(err);
+            this.setState({loading: false})
+          });
+        // }else{ this.setState({passwordNotMuch: true}) }
+
+       })
+    })
   }
   
   render() {
     
     return (
     
-      <div className="Login">
+      <div className="signup">
         <form>
-          <FormGroup controlId="formBasicText">
-              <ControlLabel>first name: </ControlLabel>
+        {this.state.passwordNotMuch && <h4>password not much </h4> }
+          <FormGroup controlId="formControlsFirst">
+              <ControlLabel>First name: </ControlLabel>
               <FormControl
                   type="text"
-                  name="fname"
-                  value={this.state.fname}
+                  name="firstname"
+                  value={this.state.firstname}
                   onChange={this.handleInputChange}
                   />
           </FormGroup>
-          <FormGroup controlId="lname">
-              <ControlLabel>last name: </ControlLabel>
+          <FormGroup controlId="formControlsLast">
+              <ControlLabel>Last name: </ControlLabel>
               <FormControl
                   type="text"
-                  name="lname"
-                  placeholder={<img src="faces.jpg" alt="icon"/>}
-                  value={this.state.lname}
+                  name="lastname"
+                  value={this.state.lastname}
                   onChange={this.handleInputChange}
                   />
           </FormGroup>
-                
+          
         
           <FormGroup controlId="formControlsEmail" bsSize="large">
-            <ControlLabel>email</ControlLabel>
+            <ControlLabel>Email</ControlLabel>
             <FormControl
               autoFocus
               type="email"
@@ -109,7 +144,7 @@ class Signup extends Component {
             />
           </FormGroup>
           <FormGroup controlId="formControlsPassword" bsSize="large">
-            <ControlLabel>password</ControlLabel>
+            <ControlLabel>Password</ControlLabel>
             <FormControl
             autoFocus
             type="password"
@@ -118,15 +153,54 @@ class Signup extends Component {
               onChange={this.handleInputChange}    
             />
           </FormGroup>
-          <Button
-            // block
-            bsSize="large"
-            //  disabled={!this.validateForm()}
-            type="submit"
-            onClick={this.onSubmit}
-          >
-            submit
-          </Button><br/>
+          <FormGroup controlId="formControlsPasswordConfirm" bsSize="large">
+            <ControlLabel>Password Confirm</ControlLabel>
+            <FormControl
+            autoFocus
+            type="password"
+            name="password_confirm"
+              value={this.state.password_confirm}
+              onChange={this.handleInputChange}    
+            />
+          </FormGroup>
+          <FormGroup controlId="formControlsAttach" bsSize="large">
+            <ControlLabel>Attach Image</ControlLabel>
+            <FormControl
+            autoFocus
+            type="file"
+            name="img"
+            id="volunteerImg"
+            onChange={this.handleInputChange}
+            multiple
+              value={this.state.img}
+              
+              
+            />
+            </FormGroup>
+          
+          {
+            this.state.loading
+             ? 
+              (
+                <Button
+                disabled={true}
+                >LOADING
+                </Button>
+              )
+             : 
+             (
+               <Button
+                  // block
+                  // bsSize="large"
+                  // disabled={!this.validateForm()}
+                  type="submit"
+                  onClick={this.onSubmit}
+                >
+                Register
+                </Button>
+            )
+          }
+          <br />
           <p>if you have an account  <a  type="submit" href="" onClick={this.onClickLogin.bind(this)}>login
           {this.state.showLogin ? <Redirect to={{
             pathname: '/Login'

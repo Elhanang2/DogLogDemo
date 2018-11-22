@@ -12,8 +12,8 @@ const validateLoginInput = require("../../validation/login");
 // Importing the Volunteer model
 const Volunteer = require("../../models/Volunteer");
 
-// @route     GET api/dogs/test
-// @desc      Tests dogs route
+// @route     GET api/volunteers/test
+// @desc      Tests volunteers route
 // @access    Public
 
 router.get("/test", (req, res) =>

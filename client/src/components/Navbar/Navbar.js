@@ -32,7 +32,7 @@ class NavBar extends Component {
                   login
                 </NavItem>
                 <NavItem eventKey={5.2} href="/signup">
-                  sign in
+                  sign up
                 </NavItem>
                 <NavItem eventKey={5.3} href="/animals">
                   administrator
@@ -40,6 +40,9 @@ class NavBar extends Component {
               </NavDropdown>
               <NavItem eventKey={6} href="/contact">
                 contact us
+              </NavItem>
+              <NavItem eventKey={7} href="/quickstart">
+                quick start
               </NavItem>
             </Nav>
             <Nav pullRight />

@@ -13,13 +13,13 @@ class Animalinfo extends Component {
     this.state = {
       animal: [],
       id: '',
-      animaltype: '',
-      name: '',
+      breed: '',
+      dogname: '',
      weight: '',
      image: "",
       sex: '',
       age: '',
-      
+      zipcode: '',
       message: "",
       loading: false,
     };
@@ -35,7 +35,7 @@ class Animalinfo extends Component {
   
   onSubmit = (e) => {
     e.preventDefault();
-    const { id, animaltype, name, weight , sex, age } = this.state;
+    const { id, breed, dogname, weight , sex, age,zipcode } = this.state;
     
 
     const formData = new FormData();
@@ -54,14 +54,15 @@ class Animalinfo extends Component {
         }
       
       }).then((response)=>{
-      //console.log("img result "+ response);
+      // console.log("img result "+ response);
       //this.getImgurl(response.id);
       const postData = { 
         id, 
-        animaltype, 
-        name, 
+        breed, 
+        dogname, 
         weight, 
         sex,
+        zipcode,
         age,
         'image': response.data.data.link
       };
@@ -74,11 +75,12 @@ class Animalinfo extends Component {
         this.setState({
             
             id: '',
-            animaltype: '',
-            name: '',
+            breed: '',
+            dogname: '',
            weight: '',
             sex: '',
             age: '',
+            zipcode: '',
            image: '',
             loading: false,
             
@@ -88,13 +90,8 @@ class Animalinfo extends Component {
         this.setState({loading: false})
       });
     })
-    
-   
-     
-      
-     
+  
     })
-    
     
   }
 //   getImgurl=(imgid)=> {
@@ -103,8 +100,7 @@ class Animalinfo extends Component {
         
 //       })
 // }
-    
-
+  
   render() {
     
     return (
@@ -124,8 +120,8 @@ class Animalinfo extends Component {
               <ControlLabel>species </ControlLabel>
               <FormControl
                   type="text"
-                  name="animaltype"
-                  value={this.state.animaltype}
+                  name="breed"
+                  value={this.state.breed}
                   onChange={this.handleInputChange}
                   />
           </FormGroup>
@@ -135,9 +131,9 @@ class Animalinfo extends Component {
             <ControlLabel>name</ControlLabel>
             <FormControl
               autoFocus
-              type="name"
-              name="name"
-              value={this.state.name}
+              type="text"
+              name="dogname"
+              value={this.state.dogname}
               onChange={this.handleInputChange}
             />
           </FormGroup>
@@ -145,7 +141,7 @@ class Animalinfo extends Component {
             <ControlLabel>weight</ControlLabel>
             <FormControl
             autoFocus
-            type="weight"
+            type="number"
             name="weight"
               value={this.state.weight}
               onChange={this.handleInputChange}
@@ -156,7 +152,7 @@ class Animalinfo extends Component {
             <ControlLabel>age</ControlLabel>
             <FormControl
             autoFocus
-            type="age"
+            type="number"
             name="age"
               value={this.state.age}
               onChange={this.handleInputChange}
@@ -170,6 +166,17 @@ class Animalinfo extends Component {
             type="sex"
             name="sex"
               value={this.state.sex}
+              onChange={this.handleInputChange}
+              
+            />
+          </FormGroup>
+          <FormGroup controlId="formControlsZip" bsSize="large">
+            <ControlLabel>Zip Code</ControlLabel>
+            <FormControl
+            autoFocus
+            type="number"
+            name="zipcode"
+              value={this.state.zipcode}
               onChange={this.handleInputChange}
               
             />

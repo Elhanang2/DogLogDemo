@@ -8,10 +8,10 @@ import Signup from "./components/Signup";
 import Contact from "./components/Contact";
 import Animalinfo from "./components/Animalinfo";
 import Maps from "./components/Map";
-
+import QuickStart from "./components/QuickStart";
 import About from "./pages/About";
-
-import DogSearch from "./pages/DogSearch";
+import AddRating from "./components/AddRating";
+import DogSearch from "./components/SearchForm";
 
 class App extends Component {
   render() {
@@ -29,7 +29,10 @@ class App extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/animals" component={Animalinfo} />    
+          <Route exact path="/animals" component={Animalinfo} />  
+          <Route exact path="/quickstart" component={QuickStart} />
+          <Route exact path="/addrating" component= {AddRating} />
+             
         </div>
       </Router>
 

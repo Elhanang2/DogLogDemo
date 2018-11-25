@@ -10,10 +10,8 @@ const PasswordForm =props => (
             value={props.password}
             placeholder="password"
             onChange={props.handlePasswordChange}
-            
             />
             </FormGroup>
-        
             <Button
                 bsSize="large"
                 type="submit"

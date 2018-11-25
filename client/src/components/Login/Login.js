@@ -34,10 +34,10 @@ export default class Login extends Component {
       password: password
     }}).then(res =>{ 
       console.log("first name : "+ res.data.firstname)
-        if((res.data.email === this.state.email) &&
+      if((res.data.email === this.state.email) &&
         (res.data.password === this.state.password)){
         this.setState({volunteerrating:!this.state.volunteerrating, errmessage: this.state.errmessage, firstname: res.data.firstname})
-    }else{this.setState({errmessage: !this.state.errmessage})}
+      }else{this.setState({errmessage: !this.state.errmessage})}
     }
     ).catch(err => console.log(err)) 
     }
@@ -47,9 +47,7 @@ export default class Login extends Component {
   }
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
-  
+  } 
   zhandleSubmit = event => {
     event.preventDefault();
   }
@@ -59,7 +57,7 @@ export default class Login extends Component {
       <div className="Login">
       
         <form onSubmit={this.handleSubmit}>
-        {this.state.errmessage && <h4 style={{color:"red",alignContent:"center"}}>Incorrect password or email </h4>}
+          {this.state.errmessage && <h4 style={{color:"red",alignContent:"center"}}>Incorrect password or email </h4>}
           <FormGroup controlId="email" bsSize="large">
           <ControlLabel>email</ControlLabel>
             <FormControl
@@ -69,7 +67,6 @@ export default class Login extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <br/>
           <FormGroup controlId="password" bsSize="large">
             <ControlLabel>password</ControlLabel>
             <FormControl
@@ -78,24 +75,21 @@ export default class Login extends Component {
               onChange={this.handleChange}
               
             />
-                 <br/>
+
           </FormGroup>
           <Button
-           
             bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
             onClick={this.loginOnClick.bind(this)}
           >
             login
-             
-          
           </Button><br/>
           {this.state.volunteerrating && <Redirect to={{
             pathname: '/addrating',
             state: { firstname: this.state.firstname}
           }} />}
-          <br></br>
+          
           <p>No account ?   <a href="#" onClick={this.onClickSignup.bind(this)}>Signup
           {this.state.showSignup ? <Redirect to={{
             pathname: '/Signup'

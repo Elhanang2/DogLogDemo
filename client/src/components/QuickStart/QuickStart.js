@@ -11,14 +11,14 @@ class QuickStart extends Component {
         super(props);
         
         this.state = {
-                search: "",
-                password: "",
-                firstname: "",
-                volunteer: [],
-                showform:false,
-                showRatingForm: false,
-                passwordfromdb: "",
-                message: false
+            search: "",
+            password: "",
+            firstname: "",
+            volunteer: [],
+            showform:false,
+            showRatingForm: false,
+            passwordfromdb: "",
+            message: false
         }
         this.imageClick = this.imageClick.bind(this);
         this.handleQuicksearchChange = this.handleQuicksearchChange.bind(this);
@@ -80,7 +80,7 @@ class QuickStart extends Component {
         
         return(
             
-           <Form>
+           <Form >
                 <FormGroup controlId="formControllsSearch">
                     <FormControl
                         type="text"
@@ -97,8 +97,8 @@ class QuickStart extends Component {
                 >
                     Search
                 </Button>
-                {this.state.volunteer.length > 0 && <Jumbotron style={{backgroundColor:"paleturquoise"}}>
-                <h1>Volunteer Lists</h1> </Jumbotron>}
+                {this.state.volunteer.length > 0 && <h2 >
+                Volunteer Lists </h2>}
             
                 {this.state.volunteer.length  ? ( 
                   <List>
@@ -108,7 +108,7 @@ class QuickStart extends Component {
                     
                             <Card className="cards">
                             <CardBody>
-                                <CardHeader tag="h3"><span style={{ color: "blue" }}> Name : {volunteerdata.firstname} </span></CardHeader>
+                                <CardHeader tag="h3"><span style={{ color: "blue" }}>  {volunteerdata.firstname} </span></CardHeader>
                             </CardBody>
                                 {<img className={volunteerdata._id} style={{width:150,height:150}} 
                                 

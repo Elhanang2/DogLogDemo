@@ -1,0 +1,14 @@
+.navbarbody{
+    font-size: 18px;
+    height: 130px;
+    color: wheat;
+}
+.navbar {
+    padding-top:20px; 
+    background-color: rgb(152, 227, 250);
+    height: 100px;
+    
+  }
+  .navbar-default #nav-bar{
+      color: wheat;
+  }

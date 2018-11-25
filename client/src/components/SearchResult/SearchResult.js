@@ -9,14 +9,14 @@ import { Card, CardText, CardBody, CardLink, CardHeader } from 'reactstrap';
           <Jumbotron style={{backgroundColor:"paleturquoise"}}>
           <h1>Dogs Lists</h1> </Jumbotron>
       
-          {props.arrayname.length ? ( 
+          {props.rating.length ? ( 
             <List>
-              {props.arrayname.map(animaldata => (
-                <ListItem inline className="doglist" style={{ padding: "10px" }} key={animaldata._id}>
+              {props.rating.map(ratingresult => (
+                <ListItem inline className="doglist" style={{ padding: "10px" }} key={ratingresult._id}>
           
                   <Card className="cards">
                     <CardBody>
-                    <CardHeader tag="h3"><span style={{ color: "blue" }}>Dog Name : {animaldata.name} </span></CardHeader>
+                    <CardHeader tag="h3"><span style={{ color: "blue" }}>Dog Name : {ratingresult.sit_rating} </span></CardHeader>
                     </CardBody>
                     {/*{<img style={{width:150,height:150}} src={ animaldata.image } alt="dogimage"/>}
                     <CardBody>

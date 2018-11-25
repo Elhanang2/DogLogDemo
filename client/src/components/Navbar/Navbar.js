@@ -2,13 +2,14 @@ import React, {Component} from "react";
 import { Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap'
 import "./Navbar.css";
 class NavBar extends Component {
-    render(){
-        return(
-            <div>
-    <Navbar collapseOnSelect>
+  render(){
+    
+    return(
+      <div >
+        <Navbar id="nav-bar" collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-        {/*<a href="#brand">doglog</a>*/}
+              {/*<a href="#brand">doglog</a>*/}
               <img width="150px" height="150px" src="images/logo.png" alt="logo"/>
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -43,6 +44,9 @@ class NavBar extends Component {
               </NavItem>
               <NavItem eventKey={7} href="/quickstart">
                 quick start
+              </NavItem>
+              <NavItem eventKey={7} href="/test">
+                test
               </NavItem>
             </Nav>
             <Nav pullRight />

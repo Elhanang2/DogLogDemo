@@ -1,11 +1,12 @@
-@media all and (min-width: 480px) {
+@media all and (min-width: 380px) {
     .signup {
-      padding: 60px 0;
+      /* padding: 60px 0; */
+      font-size: 17px;
     }
   
     .signup form {
       margin: 0 auto;
-      max-width: 320px;
+      max-width: 400px;
     }
     button{
       border: 2px solid lightgrey;

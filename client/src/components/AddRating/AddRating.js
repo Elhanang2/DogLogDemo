@@ -60,13 +60,13 @@ class AddRating extends Component {
                         <input type="text" name="name" vlaue={this.state.name} onChange={this.onAddratingChange }/>
                     </FormGroup>*/}
                     {<h4>Volunteer Name: {this.props.location.state.firstname}</h4>}
+                    <br/>
+                    {<h4 style={{color:"blue",fontSize:'14px'}}>rating system: 1 = reasonable, 2 = good; 3 = excellent</h4>}
                     <FormGroup className='field'>
                         <ControlLabel> Dog Id </ControlLabel>
                         <input type="text" name="dog_id" vlaue={this.state.dog_id} onChange={this.onAddratingChange }/>
                     </FormGroup>
-                        {<h4 style={{color:"blue"}}>rating system: 1 = reasonable, 2 = good; 3 = excellent</h4>}
-                        <br/>
-                        <br/>
+                       
                     <FormGroup className='field'>
                         <ControlLabel> sit_rating </ControlLabel>
                         <FormControl componentClass="select" name="sit_rating" value={this.state.value} onChange={this.onAddratingChange} >

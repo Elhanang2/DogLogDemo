@@ -1,20 +1,23 @@
 @media all and (min-width: 480px) {
     .animaldata {
-      padding: 60px 0;
+      /* padding: 60px 0; */
     }
   
     .animaldata form {
       font-family: 'Comfortaa', cursive;
       margin: 0 auto;
-      max-width: 320px;
-      border: 2px solid lightgray;
+      max-width: 400px;
+      /* border: 2px solid lightgray; */
       border-radius: 6px;
       padding: 10px;
     }
     #formControlsId.form-control, #formControlsanimaltype.form-control, #formControlsName.form-control, #formControlsWeight.form-control, #formControlsAge.form-control, #formControlsSex.form-control {
-      border: solid 2px paleturquoise;
+      /* border: solid 2px paleturquoise; */
     }
     button.btn.btn-default{
   margin-top: 10px;
     }
   }
+h3{
+  text-align: center;
+}

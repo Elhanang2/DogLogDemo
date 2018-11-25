@@ -17,7 +17,10 @@ const apiRoutes = require('./routes/api');
 // const authenticationUtils = require('./utils/authentication');
 
 
+//------------------------------------------------
 
+  
+//-------------------------------------------------
 
   app.use(require('express-session')({ secret: 'keyboard cat23123', resave: false, saveUninitialized: false }));
 
@@ -34,6 +37,10 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use("/api", apiRoutes);
 
+app.use(express.static(path.join(__dirname, "..", "frontend", "build")))
 
+app.get('*', (req, res) => {
+  res.sendFile( path.join(__dirname, "..", "frontend", "build", "index.html"))
+})
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));

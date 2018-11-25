@@ -106,7 +106,8 @@ class Animalinfo extends Component {
     return (
     
       <div className="animaldata">
-        <Form>
+        <form>
+        <h3>Dog Information</h3>
           <FormGroup controlId="formControlsId" bsSize="large">
               <ControlLabel>id </ControlLabel>
               <FormControl
@@ -119,11 +120,11 @@ class Animalinfo extends Component {
           <FormGroup controlId="formControlsanimaltype" bsSize="large">
               <ControlLabel>species </ControlLabel>
               <FormControl
-                  type="text"
-                  name="breed"
-                  value={this.state.breed}
-                  onChange={this.handleInputChange}
-                  />
+                type="text"
+                name="breed"
+                value={this.state.breed}
+                onChange={this.handleInputChange}
+              />
           </FormGroup>
                 
         
@@ -162,9 +163,9 @@ class Animalinfo extends Component {
           <FormGroup controlId="formControlsSex" bsSize="large">
             <ControlLabel>sex</ControlLabel>
             <FormControl
-            autoFocus
-            type="sex"
-            name="sex"
+              autoFocus
+              type="sex"
+              name="sex"
               value={this.state.sex}
               onChange={this.handleInputChange}
               
@@ -173,9 +174,9 @@ class Animalinfo extends Component {
           <FormGroup controlId="formControlsZip" bsSize="large">
             <ControlLabel>Zip Code</ControlLabel>
             <FormControl
-            autoFocus
-            type="number"
-            name="zipcode"
+              autoFocus
+              type="number"
+              name="zipcode"
               value={this.state.zipcode}
               onChange={this.handleInputChange}
               
@@ -184,15 +185,13 @@ class Animalinfo extends Component {
           <FormGroup controlId="formControlsimg" bsSize="large">
             <ControlLabel>img</ControlLabel>
             <FormControl
-            autoFocus
-            type="file"
-            name="img"
-            id="animalImg"
-            onChange={this.handleInputChange}
-            multiple
+              autoFocus
+              type="file"
+              name="img"
+              id="animalImg"
+              onChange={this.handleInputChange}
+              multiple
               value={this.state.img}
-              
-              
             />
             <p>{this.state.message}</p>
           </FormGroup>
@@ -222,7 +221,7 @@ class Animalinfo extends Component {
           <br />
           
           
-        </Form>
+        </form>
         
         </div>
     );

@@ -1,11 +1,11 @@
 import React,{Component} from "react";
-import "./SearchForm.css";
+
 import axios from "axios";
-import SearchResult from "../SearchResult";
+
 import {Jumbotron } from "react-bootstrap";
 import { List, ListItem } from "../../components/List";
 import { Card, CardText, CardBody, CardLink, CardHeader } from 'reactstrap'; 
-import searchimage from "./images/dogs.jpg"
+
 import { Button,FormGroup,FormControl,ButtonGroup,Form, Col} from 'react-bootstrap';
 
 class Search extends Component {

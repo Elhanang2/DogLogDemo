@@ -6,23 +6,23 @@ const About =() => {
     return (
       
       <div className="about" style={{padding:"15px"}}>
-      <Row>
-        
-              {<h1>about doglog</h1>}
-           
+        <Row>
+          
+          {<h1>about doglog</h1>}
+            
             {<h3>
               welcome to la animal services. please check out the links on
               this website to learn more about our mission, vision, and
               values.
             </h3>}
-           { <p>
+            { <p>
               the city of los angeles animal services department (laas) was
               established 153 years ago. its major areas of responsibility
               are saving the lives of animals that end up at one of our six
               city shelters, public safety and enforcement of municipal code
               (article 3:53.00).
             </p>}
-           { <p>
+            { <p>
               laas operates six animal shelters and has field staff serving
               the community. the shelters are award-winning facilities that
               have been built within the past 10-15 years. laas is one of
@@ -34,7 +34,7 @@ const About =() => {
               training and experience in orthopedic surgery, wildlife, high
               volume spay/neuter and more.
             </p>}
-           { <p>
+            { <p>
               our field staff includes a world-class specialized mobile
               animal rescue team (s.m.a.r.t)– one of only two in the
               country, our animal control officers are recognized experts in
@@ -44,8 +44,8 @@ const About =() => {
               alligators, horses, turtles, etc. or the people who love them
               or fear them.
             </p>}
-          
-      </Row>
+            
+        </Row>
       </div>
     );
   

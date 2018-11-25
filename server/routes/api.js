@@ -5,7 +5,6 @@ const seeder = require('../test_data/seeder');
 const volController = require('../controllers/volController');
 const authController = require('../controllers/authController');
 const passport = require('../passport');
-
 router.get('/Login', volController.Login);
 
 
@@ -33,7 +32,7 @@ router.get("/getVolunteerLogin", (req, res) => {
         
 })
 router.get("/getVolunteer", (req, res) => {
-    let query = {firstname:{ $regex: req.query.search}};
+    let query = {firstname:{ $regex: req.query.search,$options: 'i'}};
     
     console.log("search query: "+ query);
     if(!query){
@@ -86,8 +85,10 @@ router.get("/getAnimal", (req, res) => {
         // console.log("animal" + animal);
         if (err) return res.json({ success: false, error: err });
         res.send(data)
-        // console.log("animal" + data);
+        // console.log("animal" + data);            
     });
+    
+    
 });
 
 
@@ -191,7 +192,7 @@ router.post("/addrating/:id", (req, res) => {
 });
 
 router.get("/getrating", (req, res) => {
-    let query = {animalid: req.query.animalid}
+    var query = {animalid: req.query.animalid}
     console.log("ids : "+ query);
     db.VolunteerReport.find( query, (err, data) =>{
         

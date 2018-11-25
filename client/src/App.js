@@ -12,6 +12,7 @@ import QuickStart from "./components/QuickStart";
 import About from "./pages/About";
 import AddRating from "./components/AddRating";
 import DogSearch from "./components/SearchForm";
+import test from "./components/RatingResult"
 
 class App extends Component {
   render() {
@@ -32,7 +33,7 @@ class App extends Component {
           <Route exact path="/animals" component={Animalinfo} />  
           <Route exact path="/quickstart" component={QuickStart} />
           <Route exact path="/addrating" component= {AddRating} />
-             
+           <Route exact path= "/test" component={test} />  
         </div>
       </Router>
 

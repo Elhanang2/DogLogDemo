@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { FormGroup, ControlLabel, Button, Form, Col } from "react-bootstrap";
 import "./Contact.css";
+
 class ContactPage extends Component {
   render() {
     return (
       <div>        
-
         <Form
           horizontal
           center
@@ -19,8 +19,6 @@ class ContactPage extends Component {
             <Col componentClass={ControlLabel} sm={2}>
               Name
             </Col>
-
-
             <Col sm={6}>
               <input
                 type="name"
@@ -57,16 +55,10 @@ class ContactPage extends Component {
               />
             </Col>
           </FormGroup>
-
-
-      <Button  bsSize="large" id="submit1" className="btn ">Submit</Button>
-   
-    <br/>
-
-          
+          <Button  bsSize="large" id="submit1" className="btn ">Submit</Button>
+          <br/>
         </Form>
         <br />
-
       </div>
     );
   }

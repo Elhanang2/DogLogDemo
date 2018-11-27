@@ -1,23 +1,64 @@
-.jumbotron{
-    height: 50%;
-    background-color: paleturquoise;
-    border-radius: 6px;
-    border: 2px solid lightgray;
-    }
-    
-    h1{
-            text-align: center; 
-            display: flex;
-            justify-content: center;
-            font-size: 300%;
-            color: grey;
-            font-stretch: expanded;   
-    }
+h2, h3, p{
+    font-family: 'Give You Glory', cursive;
+    font-weight: bold;
+    color: black;
+    font-size: 200%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+  }
+
+  .btn-group-vertical{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    font-family: 'Give You Glory', cursive;
+    font-weight: bold;
+
+  }
+.form{
+  height: 600px;
+}
+  select.select-form-control{
+    font-family: 'Give You Glory', cursive;
+  	align-content: center;
+
+  }
+
+  .button.button.btn.btn-default {
+   font: 160px;
+   height: 60px;
+   width: 100%;
+   font-weight: bold;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+
+
+  #formControlsTextarea.text.form-control, .textarea{
+    font-size: 20px;
+    color: black;
+
+}
+  
+  @import url('https://fonts.googleapis.com/css?family=Give+You+Glory');
+  
+.body{
+background-color: white;
+}
+      
+      @import url('https://fonts.googleapis.com/css?family=Give+You+Glory');
+
     list.list-group.item{
         text-align: center;
     
     }
     button{
+        font-family: 'Give You Glory', cursive;
         background-color: grey;
         color: white;
         border: 2px paleturquoise;
@@ -26,4 +67,9 @@
     }
     .span{
         color: grey;
+    }
+
+  #formControlsTextarea.text.form-control{
+        font-size: 20px;
+        text-align: center;
     }

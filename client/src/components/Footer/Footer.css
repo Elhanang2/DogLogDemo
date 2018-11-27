@@ -1,6 +1,18 @@
+p, span{
+	font-family: 'Give You Glory', cursive;
+	color: black;
+	font-size: 200%;
+	margin-left: 5%;
+	margin-right: 5%;
+  }
+  
+  @import url('https://fonts.googleapis.com/css?family=Give+You+Glory');
+
 .footer{
-	background-color: rgb(152, 227, 250);
+	font-family: 'Give You Glory', cursive;
+	background-color: white;
 	padding: 20px;
-	height: 80px;
+	/* height: 60px; */
 	margin: auto;
+	margin-top: 70px;
 }

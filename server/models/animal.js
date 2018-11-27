@@ -6,15 +6,33 @@ const Schema = mongoose.Schema;
 const AnimalSchema = new Schema(
   {
    
-    id: Number,
+    id: {
+      type: Number,
+      required: true
+    },
     breed: String,
-    dogname: String,
-    weight: Number,
-    sex: String,
-    age: Number,
+    dogname: {
+      type: String,
+      required: true
+    },
+    weight: {
+      type: Number,
+      required: true
+    },
+    sex: {
+      type: String,
+      required: true
+    },
+    age: {
+      type: Number,
+      required: true
+    },
     size: String,
     agelabel: String,
-    likes: Number,
+    likes: {
+      type: Number,
+      required: true
+    },
     image: String,
     zipcode: Number
     

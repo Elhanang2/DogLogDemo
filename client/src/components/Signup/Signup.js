@@ -23,17 +23,20 @@ class Signup extends Component {
       password_confirm: '',
       showLogin: false,
       showresult: false,
+      isLoading: true,
       loading: false,
       passwordNotMuch:false,
-      message: ''
+      signUpError: ''
     };
   }
-
+  
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 6 && this.state.firstname.length>3 && this.state.lastname.length>3 ;
   }
   componentDidMount() {
-  
+    this.setState({
+      isLoading: false
+    });
     
   }
   componentWillUnmount() {
@@ -52,7 +55,7 @@ class Signup extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { firstname, lastname, email, password, password_confirm } = this.state;
-    
+    this.setState({isLoading: true })
     if(password ===password_confirm  ){
 
     
@@ -84,9 +87,9 @@ class Signup extends Component {
           'image': response.data.data.link
         };
     
-          axios.post('/api/putVolunteer', postVolunteer)
+          axios.post('/api/volunteer/signup', postVolunteer)
           .then((result) => {
-            console.log(result);
+            console.log(result.message);
             //access the results here....
             // this.getDataFromDb();
             this.setState({
@@ -97,13 +100,15 @@ class Signup extends Component {
                 password_confirm:"",
                 image: "",
                 loading: false,
-                message: result.DublicateEmail || result.emailExistence
+                isLoading: false,
+                showLogin: true,
+                signUpError: result.message
                 
               });
               
           }).catch(err => {
             console.log(err);
-            this.setState({loading: false})
+            this.setState({isLoading:false,signUpError:err.message, loading: false})
           });
         // }else{ this.setState({passwordNotMuch: true}) }
 
@@ -115,14 +120,14 @@ class Signup extends Component {
   }
   
   render() {
-    
+    const {signUpError}=this.state;
     return (
     
       <div className="signup">
         <form>
         <h3>Volunteer Registration Form</h3><br/>
-        {this.state.message}
-        {this.state.passwordNotMuch && <h4>password not much </h4> }
+        {(signUpError)? <p>{signUpError}</p>:null}
+        {this.state.passwordNotMuch && <h4 style={{color:"red",alignContent:"center"}}>password not much </h4> }
           <FormGroup controlId="formControlsFirst">
             <ControlLabel>First name: </ControlLabel>
             <FormControl
@@ -202,7 +207,11 @@ class Signup extends Component {
                   onClick={this.onSubmit}
                 >
                 Register
+                {this.state.showLogin ? <Redirect to={{
+                  pathname: '/Login'
+                }} />: null}
                 </Button>
+                
             )
           }
           <br />

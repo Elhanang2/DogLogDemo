@@ -50,7 +50,7 @@ class AddRating extends Component {
         }
 
     render() {
-        // console.log(this.props);
+        
         return (
             <div className="volunteerrating">
                 <form  className='add-rating' >
@@ -59,7 +59,7 @@ class AddRating extends Component {
                         <ControlLabel> Volunteer Name </ControlLabel>
                         <input type="text" name="name" vlaue={this.state.name} onChange={this.onAddratingChange }/>
                     </FormGroup>*/}
-                    {<h4>Volunteer Name: {this.props.location.state.firstname}</h4>}
+                    {<h4>Volunteer Name: {this.props.location.firstname}</h4>}
                     <br/>
                     {<h4 style={{color:"blue",fontSize:'14px'}}>rating system: 1 = reasonable, 2 = good; 3 = excellent</h4>}
                     <FormGroup className='field'>

@@ -1,11 +1,11 @@
 import React,{Component} from "react";
 import "./SearchForm.css";
 import axios from "axios";
-import SearchResult from "../SearchResult";
+// import SearchResult from "../SearchResult";
 import {Jumbotron } from "react-bootstrap";
 import { List, ListItem } from "../../components/List";
 import { Card, CardText, CardBody, CardLink, CardHeader } from 'reactstrap'; 
-import searchimage from "./images/dogs.jpg"
+// import searchimage from "./images/dogs.jpg"
 import { Button,FormGroup,FormControl,ButtonGroup,Form, Col} from 'react-bootstrap';
 
 class Search extends Component {
@@ -79,7 +79,7 @@ componentDidMount() {
            
             <Form className="search-form">
         {/*<img src={searchimage} alt="dogimage" />*/}
-        <h3>Select Dogs Search </h3>
+        <h3> Dogs Search </h3>
             <br/>
             <ButtonGroup vertical>
                 <FormGroup className="Button">

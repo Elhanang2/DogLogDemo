@@ -50,24 +50,142 @@ router.get("/getVolunteer", (req, res) => {
         });
      }
 });
-router.post("/putVolunteer", (req, res) => {
-    let volunteer = new db.Volunteer();
-
-    const { firstname, lastname, email, password, password_confirm, image } = req.body;
-
-   volunteer.firstname = firstname;
-
-    volunteer.lastname = lastname;
-    volunteer.email = email;
-    volunteer.password = password;
-    volunteer.password_confirm = password_confirm;
-    volunteer.image = image;
-   volunteer.save(err => {
-        // console.log("data: " + volunteer);
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true });
+//-----------------------------------------------------
+router.post('/signin', (req, res) => {
+    const {password}=req.body;
+    let {email}=req.body;
+    if (!email) {
+      return res.send({
+        success: false,
+        message: 'Error: Email cannot be blank.'
+      });
+    }
+    if (!password) {
+      return res.send({
+        success: false,
+        message: 'Error: Password cannot be blank.'
+      });
+    }
+    email = email.toLowerCase();
+    email = email.trim();
+    db.Volunteer.find({
+      email: email
+    }, (err, volunteers) => {
+      if (err) {
+        console.log('err 2:', err);
+        return res.send({
+          success: false,
+          message: 'Error: server error'
+        });
+      }
+      if (volunteers.length != 1) {
+        return res.send({
+          success: false,
+          message: 'Error: Invalid'
+        });
+      }
+      const volunteer = volunteers[0];
+      if (!volunteer.validPassword(password)) {
+        return res.send({
+          success: false,
+          message: 'Error: Invalid'
+        });
+      }
+      // Otherwise correct user
+      const VolunteerSession = new db.VolunteerSession();
+      VolunteerSession.userId = volunteer._id;
+      VolunteerSession.save((err, doc) => {
+        if (err) {
+          console.log(err);
+          return res.send({
+            success: false,
+            message: 'Error: server error'
+          });
+        }
+        return res.send({
+          success: true,
+          message: 'Valid sign in',
+          token: doc._id
+        });
+      });
     });
-    // }
+  });
+
+  router.get('/logout', (req, res) => {
+    // Get the token
+    
+    const { token } = req.query;
+    // ?token=test
+    // Verify the token is one of a kind and it's not deleted.
+    VolunteerSession.findOneAndUpdate({
+      _id: token,
+      isDeleted: false
+    }, {
+      $set: {
+        isDeleted:true
+      }
+    }, null, (err, sessions) => {
+      if (err) {
+        console.log(err);
+        return res.send({
+          success: false,
+          message: 'Error: Server error'
+        });
+      }
+      return res.send({
+        success: true,
+        message: 'Good'
+      });
+    });
+  });
+//-------------------------------------------------------
+router.post("/volunteer/signup", (req, res) => {
+    
+
+    const { firstname, lastname,  password, password_confirm, image } = req.body;
+    let {email}= req.body;
+    if (!email) {
+        return res.send({
+          success: false,
+          message: 'Error: Email cannot be blank.'
+        });
+    }
+    if (!password) {
+        return res.send({
+          success: false,
+          message: 'Error: Password cannot be blank.'
+        });
+    }
+      email = email.toLowerCase();
+      email = email.trim();
+    db.Volunteer.find({
+        email: email
+        }, (err, previousUsers) => {
+            if (err) {
+                return res.send({
+                success: false,
+                message: 'Error: Server error'
+                });
+            } else if (previousUsers.length > 0) {
+                return res.send({
+                success: false,
+                message: 'Error: Account already exist.'
+                });
+            }
+        
+                let volunteer = new db.Volunteer();
+                volunteer.firstname = firstname;
+                volunteer.lastname = lastname;
+                volunteer.email = email;
+                volunteer.password = volunteer.generateHash(password);
+                volunteer.password_confirm = password_confirm;
+                volunteer.image = image;
+            volunteer.save(err => {
+                    // console.log("data: " + volunteer);
+                    if (err) return res.json({ success: false, message: 'Error: Server error'});
+                    return res.json({ success: true, message:'Signed up' });
+            });
+        })
 });
 
 

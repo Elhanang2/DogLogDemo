@@ -1,12 +1,104 @@
-@media all and (min-width: 380px) {
+h3, p{
+  font-family: 'Give You Glory', cursive;
+  color: black;
+  font-size: 200%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.form-group.form-group-lg {
+	width: 100%;
+	border: 20x solid darkorange;
+	margin: auto;
+}
+
+.form{
+	width: 100%;
+}
+
+input#formControlsFirst.form-control, input#formControlsLast.form-control {
+	/* width: 160%; */
+	height: 50px;
+	margin: auto;
+	align-content: center;
+	border: 2px solid darkorange;
+}
+
+input#formControlsEmail.form-control,input#formControlsPassword.form-control, input#formControlsPasswordConfirm #formControlsLastname{
+	/* width: 180%; */
+	height: 50px;
+	margin:auto;
+	display: inline-block;
+	border: 2px solid darkorange;
+
+}
+.formControlsAttach{
+	background-color: palegoldenrod;
+	margin: auto;
+}
+input#volunteerImg, input{
+	background-color: palegoldenrod;
+	font-family: 'Give You Glory', cursive;
+	color: black;
+	width: 80%;
+	height: 40px;
+	margin: auto;
+
+}
+button.btn.btn-default {
+	font: 30px;
+	height: 50px;
+	font-weight: bold;
+	margin: auto;
+	text-align: center;
+	background-color:palegoldenrod;
+	border: 2px solid darkorange;
+	font-family: 'Give You Glory', cursive;
+	align-items: center;
+	
+ }
+@import url('https://fonts.googleapis.com/css?family=Give+You+Glory');
+
+@media all and (min-width: 375px) {
+	.Login {
+	  padding: 60px 0;
+	}
+ 
+	.Login form {
+		font-family: 'Give You Glory', cursive;
+	  margin: 0 auto;
+	  max-width: 320px;
+	  width: 100%;
+	  justify-content: center;
+	  border: 2px solid darkorange;
+	  padding: 20px;
+	  border-radius: 6px;
+	}
+
+	#email.form-control {
+	border: solid 2px darkorange;
+	margin-bottom: 20px;
+	width: 100%;
+	}
+	#password.form-control{
+	  border: solid 2px darkorange;
+	  margin-bottom: 20px;
+ 
+	}
+ 
+  }
+
+@import url('https://fonts.googleapis.com/css?family=Give+You+Glory');
+
+@media all and (min-width: 480px) {
     .signup {
-      /* padding: 60px 0; */
-      font-size: 17px;
+      padding: 60px 0;
+      font-family: 'Give You Glory', cursive;
     }
   
     .signup form {
       margin: 0 auto;
-      max-width: 400px;
+      max-width: 320px;
     }
     button{
       border: 2px solid lightgrey;
@@ -15,4 +107,9 @@
       margin: auto;
     }
     
+  }
+  .select{
+    padding-top:0px;
+    padding-bottom: 0px;
+    /* height: 100px; */
   }

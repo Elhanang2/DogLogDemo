@@ -1,4 +1,22 @@
-.about{
+.about, .div, .bigcontainer{
     margin: 20px;
-    line-height: 40px;
+    background-color: white;
 }
+
+h2{
+    font-size: 500%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    font-family: 'Give You Glory', cursive;
+    color: maroon;
+}
+
+h3, p{
+    font-family: 'Give You Glory', cursive;
+    color: maroon;
+    font-size: 200%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Give+You+Glory');

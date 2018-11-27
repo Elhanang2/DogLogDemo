@@ -20,3 +20,4 @@ module.exports.Volunteer = require("./volunteer");
 module.exports.Animal = require("./animal");
 module.exports.Shelter = require("./shelter");
 module.exports.VolunteerReport = require("./volunteer_report");
+module.exports.VolunteerSession =require("./volunteerSession");

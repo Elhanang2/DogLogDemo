@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./App.css";
 import NavBar from './components/Navbar';
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Contact from "./components/Contact";
@@ -12,7 +12,7 @@ import QuickStart from "./components/QuickStart";
 import About from "./pages/About";
 import AddRating from "./components/AddRating";
 import DogSearch from "./components/SearchForm";
-import test from "./components/RatingResult"
+import Routing from "./components/RatingResult"
 
 class App extends Component {
   render() {
@@ -22,6 +22,7 @@ class App extends Component {
         <Router>
         
         <div>
+        <Routing />
         <NavBar />
         
           <Route exact path="/" component={About} />
@@ -29,11 +30,14 @@ class App extends Component {
           <Route exact path="/dogsearch" component={DogSearch} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/login" component={Login} />
+          
           <Route exact path="/animals" component={Animalinfo} />  
           <Route exact path="/quickstart" component={QuickStart} />
-          <Route exact path="/addrating" component= {AddRating} />
-           <Route exact path= "/test" component={test} />  
+          
+          <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/addrating" component={AddRating} />
+        </Switch>
         </div>
       </Router>
 

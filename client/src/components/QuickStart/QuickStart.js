@@ -60,11 +60,11 @@ class QuickStart extends Component {
         // }
     }
    
-    onSubmitPassword= (password) => {
+    onSubmitPassword= (password,name) => {
         // axios.get("/api/getPassword/:id")
         // .then(res => { this.setState({ passwordfromdb: res.data})})
         if(this.state.password === password){
-          this.setState({showRatingForm: !this.state.showRatingForm})  
+          this.setState({showRatingForm: true, firstname:name})  
         }
     }
     onQuicksearchSubmit = (e) => {
@@ -104,12 +104,12 @@ class QuickStart extends Component {
                   <List>
                     {this.state.volunteer.map( volunteerdata => (
                      
-                        <ListItem  className="doglist" style={{ padding: "10px" }} key={volunteerdata._id} >
+                        <ListItem  className="volunteerlist" style={{ padding: "10px" }} key={volunteerdata._id} >
                     
                             <Card className="cards">
-                            <CardBody>
-                                <CardHeader tag="h3"><span style={{ color: "blue" }}>  {volunteerdata.firstname} </span></CardHeader>
-                            </CardBody>
+                           
+                                <CardHeader ><span style={{ color: "blue",fontSize:"18px" }}>  {volunteerdata.firstname} </span></CardHeader>
+                          
                                 {<img className={volunteerdata._id} style={{width:150,height:150}} 
                                 
                                 onClick={() => this.imageClick(volunteerdata._id)}
@@ -118,7 +118,7 @@ class QuickStart extends Component {
                                 <PasswordForm message={this.state.message}
                                 volunteer_id= {volunteerdata._id}
                                 handlePasswordChange={this.handlePasswordChange}
-                                onSubmitPassword={this.onSubmitPassword(volunteerdata.password)}
+                                onSubmitPassword={this.onSubmitPassword(volunteerdata.password,volunteerdata.firstname)}
                                 />}               
                                 {this.state.showRatingForm && <Redirect to={{
                                     pathname: '/addrating',
